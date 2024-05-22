@@ -1,0 +1,4 @@
+# Local exclude file for template development.
+# These files will be defined by template users.
+config.yml
+dockerfile
