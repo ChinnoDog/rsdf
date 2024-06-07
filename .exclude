@@ -2,3 +2,4 @@
 # These files will be defined by template users.
 config.yml
 dockerfile
+makefile.d/myapp.mk
