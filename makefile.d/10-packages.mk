@@ -17,9 +17,10 @@ devtools: $(LINUX_FLAVOR)-devtools
 
 ### Build environment dependencies
 
-Ubuntu_BUILD_PACKAGES := make python3 openssl pandoc
+Ubuntu_BUILD_PACKAGES := make python3 openssl pandoc amazon-ecr-credential-helper jq
 
 Ubuntu-depends Debian-depends: FORCE
+	export DEBIAN_FRONTEND=noninteractive
 	$(SUDO) apt-get install -y $(Ubuntu_BUILD_PACKAGES)
 
 depends: $(LINUX_FLAVOR)-depends
