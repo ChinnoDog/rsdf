@@ -24,3 +24,5 @@ Ubuntu-depends Debian-depends: FORCE
 	$(SUDO) apt-get install -y $(Ubuntu_BUILD_PACKAGES)
 
 depends: $(LINUX_FLAVOR)-depends
+	pip install \
+		Jinja2

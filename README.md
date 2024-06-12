@@ -16,6 +16,9 @@ Most of the time you will want to execute commands using the debug configuration
 # Features
 Targets and variables to use each feature.
 
+## Application Development
+- `app-dev` target: Provides features for your development environment. Currently the only feature is the launch targets for vscode.
+
 ## Documentation
 - `%.pdf` target: PDF versions of all markdown files can be generated. Simply depend on the name of the file with a .pdf extension. E.g. `README.pdf`.
 

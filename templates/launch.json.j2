@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Webapp",
+            "type": "debugpy",
+            "request": "launch",
+            "program": ".venv/bin/gunicorn",
+            "args": [
+                "{{PROJECTNAME}}:app",
+                "--bind=0.0.0.0:8000",
+                "--worker-class", "eventlet",
+                "-w", "1",
+                "--timeout=7200",
+                "--access-logfile", "-"
+            ],
+            "gevent": true,
+            "justMyCode": true,
+            "env": {
+                "DEBUG": "1",
+                "AWS_CA_BUNDLE": "test-ca.crt"
+            },
+        },
+    ]
+}
