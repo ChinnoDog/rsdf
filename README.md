@@ -1,7 +1,9 @@
 # Rapid Solution Delivery Framework
-This is a template project containing common code used for build and delivery of software to Nasuni customers. It is delivered as a group of makefiles defining optional targets for you to select from.
+This is a template project containing common code used for build and delivery of small software projects. The target audience for this framework is anyone creating software for POC or prototype that needs to quicky deliver it to an audience. As such, it doesn't have any stringent rules or guidelines. It is delivered as a group of makefiles defining optional targets for you to select from.
 
 # Getting Started
+1. Fork this project into a project of your own. Expect to get template updates on your master branch. If you don't want this to be automatic then disable update propagation or simply copy the project instead of forking it. You can always add this template as a remote to your local repository.
+1. Change the license on this repository if needed. This project is released with a permissive license so that it can be used for any project.
 1. Rename this file so you can create your own `README.md`  
    `git mv README.md README_TEMPLATE.md`
 1. Create your application's makefile at `makefile.d/myapp.mk`
@@ -30,3 +32,10 @@ Targets and variables to use each feature.
 ## certificates
 This produces a private certificate intrastructure pariticularly useful with SSL.
 - `host-<hostname>.crt` target: Create a certificate for your test host. `test-ca.crt` will be generated for you automatically. Apply the requested certificate to your test system and add `test-ca.crt` to the trusted client trust store to be able to validate it..
+
+# Contributing
+There are currently no rules or restrictions for what you can contribute so long as it aligns with the purpose of the project. Still, you should do these things to make this easy for both of us:
+- DO log an issue if you have a problem or an idea and are not ready to implement it right this second or would like some feedback.
+- DO submit pull requests that you have personally checked and verified not to cause issues.
+- DO document your code if you think it requires explanation. Inline comments are best.
+- DO consider backwards compatibility issues for anyone already using this template.
