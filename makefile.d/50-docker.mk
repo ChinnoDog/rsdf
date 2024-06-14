@@ -25,8 +25,7 @@ REPOSITORY_URI = $(shell \
 )
 REPOSITORY = $(firstword $(subst /, ,$(REPOSITORY_URI)))
 
-# This produces a flag file
-ecr-repository:
+ecr-repository: FORCE
 	aws ecr describe-repositories \
 		--repository-names "$(PROJECTNAME)" \
 		&> /dev/null
@@ -37,9 +36,8 @@ ecr-repository:
 	j=~/.docker/config.json
 	if [ ! -f $$j ]; then echo { } > $$j; fi
 	jq '.credHelpers += {"$(REPOSITORY)": "ecr-login"}' $$j > $$j.tmp && mv $$j.tmp $$j
-	touch $@
 
-container-upload: FORCE $(DEBUG_VAR) ecr-repository container
+container-upload: FORCE $(DEBUG_VAR) container
 	docker image tag $(IMAGENAME) $(IMAGENAME_REMOTE)
 	docker image push $(IMAGENAME_REMOTE)
 

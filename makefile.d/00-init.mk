@@ -5,20 +5,15 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
-# Make all variables available in subshell environments
-# This produces warnings that can't be supressed that look like this:
-#	warning: undefined variable '1'
-export
-
 # This target is used instead of .PHONY for modularity
 # See: https://www.gnu.org/software/make/manual/html_node/Force-Targets.html
 FORCE:
 
 # Read a value from a yaml file
 # $(call read_yaml,key,filename)
-#define read_yaml
-#	$(shell python -c "import yaml,sys; print(' '.join(yaml.safe_load(open(sys.argv[2])).get(sys.argv[1],'')))" $(1))
-#endef
+define read_yaml
+	$(shell python -c "import yaml,sys; print(' '.join(yaml.safe_load(open(sys.argv[2])).get(sys.argv[1],'')))" $(1))
+endef
 
 # Set the DEBUG variable in your environment if you want extra dev tools
 DEBUG ?= false

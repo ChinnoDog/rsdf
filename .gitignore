@@ -19,3 +19,8 @@
 *.o
 *.a
 *.so
+
+# Ignore encryption keys
+*.crt
+*.csr
+*.key

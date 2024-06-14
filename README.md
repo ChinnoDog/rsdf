@@ -7,29 +7,31 @@ This is a template project containing common code used for build and delivery of
 1. Rename this file so you can create your own `README.md`  
    `git mv README.md README_TEMPLATE.md`
 1. Create your application's makefile at `makefile.d/myapp.mk`
-1. Add targets below as dependencies of the `all` target and set related variables in `myapp.mk`
-1. Create the `install` target that installs your application.
+1. Add targets as dependencies of the `all` target and set related variables in `myapp.mk`
+1. Eventually, create the `install` target that installs your application.
 
-# Debug Configuration
-Most of the time you will want to execute commands using the debug configuration. This provides extra tools for resolving problems in the code. To do this simply `export DEBUG=true` before running make. When you are ready to create production quality artifacts then `export DEBUG=false` or simply `unset DEBUG` and run make again.
+# Development Environment
+Launch configurations are provided for vscode. Upstream changes will always be merged into your launch configuration but not vice versa.
 
-# Features
-Targets and variables to use each feature.
+# Makefile Features
+Targets and variables that you can utilize.
 
-## Application Development
-- `app-dev` target: Provides features for your development environment. Currently the only feature is the launch targets for vscode.
+## Debug Configuration
+`DEBUG` environment variable: Provides extra tools for resolving problems in the code. Type `export DEBUG=true` before running make for normal development. When you are ready to create production quality artifacts then `export DEBUG=false` or `unset DEBUG` and run make again.
 
 ## Documentation
 - `%.pdf` target: PDF versions of all markdown files can be generated. Simply depend on the name of the file with a .pdf extension. E.g. `README.pdf`.
 
 ## python
-- `.venv` target: build a python virtual environment.
+- `.venv` target: build a python virtual environment. This is for your application. It is assumed you use the python environment on your build server for building.
 - `python_packages` variable: Add any project-specific packages to this variable
 
 ## Linux container
+Note: You need Docker for these but it is not yet installed automatically.
 - `container` target: Builds a container with docker. The container name is the name of the project. It will either be tagged `latest` or `debug` depending on the debug setting. The `install` target must be defined for this to work.
 - `container.tar.gz` target: Export the container to an archive.
 - `base_image` variable: Use this variable to set the base image fo your container
+- `ecr-repository` target: Run this manually to create your docker repsitory in Amazon ECR. Your aws client must be configured for this to work. The repository will be created in your account in your default region.
 - `container-upload` target: This will create a repository on AWS Elastic Container Registry (ECR) and upload your image. Your aws client must be configured for this to work and you must have permission to ECR. The registry path will be determined by your account and region. This target is most useful for manually uploading releases but you can also use it as a dependency if you need to download the image from another location during testing.
 
 ## certificates
